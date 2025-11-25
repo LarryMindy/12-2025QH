@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חידון דצמבר - לארי ומינדי</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Calibri", "Arial", sans-serif;
+      background: linear-gradient(to right, #9C2831, #9C2831);
+      padding: 20px;
+      color: #2c2c2c;
+      direction: rtl;
+      text-align: right;
+    }
+   .language-switch {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px 0 40px 10px;
+  /* float: left; ← remove this */
+    }
+    .clearfix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .language-switch:hover { background-color: #444; }
+     .title-block {
+      text-align: center;
+       margin-bottom: 20px;
+    }
+      .title-block h2 {
+       margin: 10px 0;
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #d35400;
+    }
+    .question {
+      font-weight: bold;
+      margin-top: 25px;
+      font-size: 1.1em;
+      animation: floatUp 0.6s ease forwards;
+    }
+    .options button {
+      display: block;
+      color: white;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      background-color: #4C4C32;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 1.1em;
+      text-align: right;
+    }
+    .options button:hover { background-color: #C5B001; }
+
+    .explanation {
+      color: #006400;
+      margin-top: 10px;
+      font-style: italic;
+      opacity: 0;
+    }
+    .explanation.show {
+      animation: zoomInLeft 0.6s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .banner {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    #score {
+      position: sticky;
+      top: 0;
+      background-color: #FFFF00;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3em;
+      border-bottom: 2px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+ .footer {
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 0.95em;
+  max-width: 768px;
+  color: #444;
+  direction: rtl;  /* Keep Hebrew text RTL but center it */
+}
+.footer a {
+  color: #9C2831;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+    .final-message {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #9C2831;
+      background-color: #FFF8DC;
+      border: 2px solid #9C2831;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: floatUp 0.6s ease forwards;
+    }
+    .back-button {
+      display: block;
+      background-color: #a02b2b;
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      font-size: 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      line-height: 1.5;
+      text-align: center;
+      margin: 40px auto 30px;
+      max-width: 400px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      white-space: normal;
+    }
+    .back-button:hover {
+      box-shadow: 0 0 12px 4px rgba(193, 60, 60, 0.6);
+      transform: scale(1.05);
+      background-color: #b5303c;
+    }
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomInLeft {
+      from { opacity: 0; transform: translateX(50px) scale(0.95); }
+      to   { opacity: 1; transform: translateX(0) scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <img src="December Quiz Banner H.jpg" alt="חידון דצמבר" class="banner">
+
+    <a href="https://larrymindy.github.io/12-2025Q/" class="language-switch" target="_blank" rel="noopener noreferrer">English</a>
+
+  <div class="title-block">
+  <h2>חידון דצמבר של לארי ומינדי</h2>
+  <h2>מהו הנושא של השיר הזה?</h2>
+</div>
+    <p id="score">0 תשובות נכונות (מתוך 15)</p>
+    <div id="quiz"></div>
+
+    <img src="divider H-C.jpg" alt="קו מפריד" class="banner">
+
+    <div class="footer">
+      <p><strong style="color: #9C2831; font-size: 1.1em;">צרו קשר</strong><br>
+        054-6446396 / 050-5921628<br>
+        <a href="mailto:larry@larryandmindy.co.il?subject=שאלה מהאתר" style="color: #9C2831;">larry@larryandmindy.co.il</a><br>
+        או<br>
+        <a href="mailto:mindy@larryandmindy.co.il?subject=שאלה מהאתר" style="color: #9C2831;">mindy@larryandmindy.co.il</a>
+      </p>
+      <p>
+        <a href="http://www.larrymindy.co.il/" target="_blank" style="color: #9C2831; font-weight: bold;">בקרו באתר הראשי שלנו</a>
+      </p>
+    </div>
+  </div>
+
+<script>
+const quiz = [
+{
+  question: "כשאלוהים אמר בפעם הראשונה...",
+  options: [
+    "שיר על פלאי הבריאה והטבע בלבד",
+    "אלגוריה על אהבה נאיבית ותמימה של התחלה חדשה",
+    "תיאור היסטורי של ראשית העולם לפי מסורות עתיקות",
+    "ביקורת על גאוות האדם ועל ריחוקו מן האל"
+  ],
+  answer: 3,
+  explanation: "כשאלוהים אמר בפעם הראשונה – מתי כספי. נושא: ביקורת על גאוות האדם ועל ריחוקו מן האל. השיר מציג את בריאת העולם מתוך נקודת מבט תמימה ותוהה של האל, שבמעשה הבריאה אינו חושב כלל על בני האדם — אך בני האדם כבר עסוקים בעצמם, בגאווה, וביצירת מזימה על מכאוב."
+},
+{
+  question: "אני מביט מהחלון…",
+  options: [
+    "תקווה בתוך כאוס פוליטי",
+    "ביקורת על אלימות ומלחמות בחברה הישראלית",
+    "שיר אהבה זוגי על רקע מציאות קשה",
+    "מבט מפוכח על אובדן הדרך בחברה הישראלית"
+  ],
+  answer: 3,
+  explanation: "יהיה טוב – דוד ברוזה. נושא: מבט מפוכח על אובדן הדרך בחברה הישראלית. השיר מתאר מבט אישי על מציאות חברתית ופוליטית קשה — מלחמות, אובדן, מנהיגות כושלת ופחד מתמשך. לצד הכאב, נשמרת גם הבטחה ש'יהיה טוב'."
+},
+{
+  question: "אני חוזר בדרך הכורכר בפיתולי אותו מסלול מוכר...",
+  options: ["געגוע ונוסטלגיה","אהבה נכזבת","ביקורת חברתית","חלום על חופש"],
+  answer: 0,
+  explanation: "דרך הכורכר – אריק סיני. נושא: געגוע ונוסטלגיה. מסע נוסטלגי שמחבר עבר והווה בתחושת חמלה וזמן חולף."
+},
+{
+  question: "בואי הנה, בואי לכאן...",
+  options: [
+    "שיר על געגוע לבית ילדות רחוק ולפשטות של פעם",
+    "שיר חיזור מלא תקווה ופנייה ישירה לאהובה להצטרף אליו",
+    "שיר על חזרה לבמה אחרי הפסקה ארוכה במוזיקה",
+    "שיר המדמה את האביב להתחדשות רוחנית כללית"
+  ],
+  answer: 1,
+  explanation: "צליל מכוון – יצחק קלפטר. נושא: שיר חיזור מלא תקווה ופנייה ישירה לאהובה להצטרף אליו."
+},
+{
+  question: "יש לי סימפטיה...",
+  options: ["ביקורת על תחבורה ציבורית","אהבה נכזבת בעיר הגדולה","חיבה לעיר תל אביב ולתושביה","געגוע לשכונה ישנה"],
+  answer: 2,
+  explanation: "יש לי סימפטיה – שלמה גרוניך. נושא: חיבה לעיר תל אביב ולתושביה. יחס מורכב לעיר מתפוררת אך אמפתיה עמוקה לאנשים שבה."
+},
+{
+  question: "באת אלי את עיני לפקוח...",
+  options: [
+    "סיפור על עינויי נפש ובקשת מחילה",
+    "שיר אהבה חושני על התעוררות והיכרות עמוקה עם הגוף",
+    "פגישה מיסטית בין אדם למלאך",
+    "שיר געגוע לילדות ולתמימות שאבדה"
+  ],
+  answer: 1,
+  explanation: "סליחות – יהודית רביץ. נושא: שיר אהבה חושני על התעוררות והיכרות עמוקה עם הגוף."
+},
+{
+  question: "האילנות כל כך כבדים...",
+  options: ["תיאור חיי כפר שקט","תצפית אסטרונומית על הלילה והכוכבים","טקסי חגים ודת מסורתית","אלגוריה על חיפוש, אובדן וחזרה הביתה"],
+  answer: 3,
+  explanation: "ערב מול הגלעד – אריק איינשטיין. נושא: אלגוריה על חיפוש, אובדן וחזרה הביתה."
+},
+{
+  question: "איך טלפון אחד קטן מעורר שוב...",
+  options: ["התמכרות לטכנולוגיה","געגוע וכשל רגשי","סיפור על ארנב בריחה","ביקורת חברתית על קשרים"],
+  answer: 1,
+  explanation: "געגוע – יהודית רביץ. נושא: געגוע וכשל רגשי. מגע טלפוני אחד מצית תשוקה וזיכרון ישן."
+},
+{
+  question: "הבוקר בא כל כך מהר...",
+  options: ["סיפור על חופשה משפחתית","בדידות והסתגלות בעיר זרה","מסע בעקבות אוצר אבוד","הרצון לברוח מחובות יומיומיות"],
+  answer: 1,
+  explanation: "הבלדה על חדוה ושלומיק – מירי אלוני. נושא: בדידות והסתגלות בעיר זרה."
+},
+{
+  question: "התשמע קולי...",
+  options: ["מסע בעקבות אוצר אבוד","געגוע ופרידה נצחית","שיחה עם אלוהים על ברכה","הרפתקה בעיר רחוקה"],
+  answer: 1,
+  explanation: "זמר נוגה (התשמע קולי) – החלונות הגבוהים. נושא: געגוע ופרידה נצחית."
+},
+{
+  question: "הלכתי הלוך בסימטת התותים...",
+  options: ["סיפור על חווה חקלאית","אהבה ומשאלות יוצאות דופן","אגדת פרחים קסומה","חיפוש אחרי מטמון אבוד"],
+  answer: 1,
+  explanation: "בסימטת התותים – דני ליטני. נושא: אהבה ומשאלות יוצאות דופן."
+},
+{
+  question: "זו הפעם הראשונה אני מתחיל להטיל ספק...",
+  options: [
+    "תיאור של כישלון רומנטי וחשש מאהבה",
+    "מחשבות על הזדקנות ואובדן כוח הרצון",
+    "הרהור פילוסופי על ספק עצמי ועל משמעות האושר",
+    "געגוע לנופי הרים והטבע הפתוח"
+  ],
+  answer: 2,
+  explanation: "הפעם הראשונה – שלמה יידוב. נושא: הרהור פילוסופי על ספק עצמי ועל משמעות האושר."
+},
+{
+  question: "ניסיתי להדביק את צעדיה...",
+  options: ["מרדף אחרי בחורה שעולה על אוטובוס","געגוע להורה שהלך לאיבוד בקניון","תשוקה ותעתוע","חשש מהליכה לבד ברחובות בלילה"],
+  answer: 2,
+  explanation: "עד סוף הקיץ – דני ליטני. נושא: תשוקה ותעתוע."
+},
+{
+  question: "שוב אני מוצץ גבעול...",
+  options: ["סיפור על עבודה חקלאית","מרד נעורים אופטימי","תחושת דריכה במקום ובריחה מהמרוץ","געגוע לתקופת לימודים"],
+  answer: 2,
+  explanation: "נשל הנחש – מאיר אריאל. נושא: תחושת דריכה במקום ובריחה מהמרוץ."
+},
+{
+  question: "כולם רוצים שירים פשוטים...",
+  options: ["געגוע לריקודים של פעם","ביקורת על תרבות פופ שטחית","שיר אהבה למדיה הישראלית","מסיבה שכונתית שמחה"],
+  answer: 1,
+  explanation: "שירים פשוטים – שלמה גרוניך. נושא: ביקורת על תרבות פופ שטחית."
+}
+];
+
+const quizDiv = document.getElementById('quiz');
+let score = 0;
+const scoreDisplay = document.getElementById('score');
+let currentIndex = 0;
+
+function showQuestion(index) {
+  const q = quiz[index];
+  const questionDiv = document.createElement('div');
+  questionDiv.className = 'question';
+  questionDiv.textContent = `${index + 1}. ${q.question}`;
+
+  const optionsDiv = document.createElement('div');
+  optionsDiv.className = 'options';
+
+  const explanationDiv = document.createElement('div');
+  explanationDiv.className = 'explanation';
+  explanationDiv.textContent = q.explanation;
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+
+    btn.onclick = () => {
+      const alreadyAnswered = Array.from(optionsDiv.children).some(b => b.disabled);
+      if (alreadyAnswered) return;
+
+      if (i === q.answer) {
+        btn.style.backgroundColor = '#072EF3';
+        score++;
+        scoreDisplay.textContent = `${score} תשובות נכונות (מתוך ${quiz.length})`;
+      } else {
+        btn.style.backgroundColor = '#CD0101';
+        const correctBtn = optionsDiv.children[q.answer];
+        correctBtn.style.backgroundColor = '#039303';
+      }
+      Array.from(optionsDiv.children).forEach(b => b.disabled = true);
+      explanationDiv.classList.add('show');
+
+      const timeToNext = 3000;
+      if (index + 1 < quiz.length) {
+        setTimeout(() => showQuestion(index + 1), timeToNext);
+      } else {
+        setTimeout(() => {
+          const doneMsg = document.createElement('div');
+          doneMsg.className = 'final-message';
+          doneMsg.textContent = 'כל השאלות נענו — כל הכבוד!';
+          quizDiv.appendChild(doneMsg);
+
+          const backLink = document.createElement('a');
+          backLink.className = 'back-button';
+          backLink.href = 'https://quiz.larrymindy.com/12-2025h.php';
+          backLink.target = '_blank';
+          backLink.rel = 'noopener noreferrer';
+          backLink.innerHTML = 'חזרה לדף הפתיחה<br>ולחידונים קודמים...';
+          quizDiv.appendChild(backLink);
+        }, timeToNext);
+      }
+    };
+
+    optionsDiv.appendChild(btn);
+  });
+
+  questionDiv.appendChild(optionsDiv);
+  questionDiv.appendChild(explanationDiv);
+  quizDiv.appendChild(questionDiv);
+}
+
+showQuestion(currentIndex);
+</script>
+</body>
+</html>
+
