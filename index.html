@@ -377,7 +377,7 @@ function showQuestion(index) {
 
   const explanationDiv = document.createElement('div');
   explanationDiv.className = 'explanation';
-  explanationDiv.textContent = q.explanation;
+  explanationDiv.innerHTML = q.explanation.replace(/\n/g, "<br>");
 
   q.options.forEach((opt, i) => {
     const btn = document.createElement('button');
